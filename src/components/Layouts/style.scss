@@ -1,0 +1,30 @@
+// side Nav
+#main_side_nav {
+    border-right: 5px solid #ddd;
+    background-color: #eee;
+    border-radius: 0 5px 5px 0;
+    height: 100%;
+    min-height: 50vh;
+
+    a {
+        text-decoration: none;
+        margin: 0 10px 0 0;
+        font-size: 18px;
+        font-weight: bold;
+        color: #060606;
+        border-radius: 5px;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    #main_side_nav {
+        background-color: transparent;
+        flex-direction: row !important;
+        height: 100%;
+        min-height: auto;
+        border-right: none;
+        border-bottom: 5px solid #ddd;
+        border-radius: 5px;
+    }
+}
