@@ -1,13 +1,18 @@
 import { Card } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addToFavAuthors } from "../../services/redux/favoriteAuthors/favoriteAuthorsActions";
+import { addToFavAuthors, removeFavAuthors } from "../../services/redux/favoriteAuthors/favoriteAuthorsActions";
 
 const ListItemComponent = ({ list }) => {
     const dispatch = useDispatch();
 
+    const { favoriteAuthors } = useSelector(({ favoriteAuthors }) => favoriteAuthors);
+
     const handleFavAuthors = (id) => {
         dispatch(addToFavAuthors(id))
+    }
+    const handleRemoveFavAuthors = id => {
+        dispatch(removeFavAuthors(id));
     }
     return (
         <div className='row my-4'>
@@ -25,8 +30,11 @@ const ListItemComponent = ({ list }) => {
                                 </strong>
                             </Card.Body>
                             <Card.Footer className="text-muted">
+
                                 <div className="d-flex justify-content-between">
-                                    <button className="btn btn-success btn-default" onClick={() => handleFavAuthors(d._id)}>Add Favorite <i className="fa-solid fa-heart" /> </button>
+                                    <button className={`btn btn-danger btn-default ${favoriteAuthors?.find(fd => fd.id === d._id) ? '' : 'd-none'}`} onClick={() => handleRemoveFavAuthors(d._id)}>Remove Favorite <i className="fa-solid fa-heart" /> </button>
+
+                                    <button className={`btn btn-success btn-default ${favoriteAuthors?.find(fd => fd.id === d._id) ? 'd-none' : ''}`} onClick={() => handleFavAuthors(d._id)}>Add Favorite <i className="fa-solid fa-heart" /> </button>
                                     <Link to={d.link} className="text-muted p-2"><i className="fa-solid fa-up-right-from-square" /></Link>
                                 </div>
                             </Card.Footer>

@@ -25,6 +25,7 @@ const Authors = () => {
     useEffect(() => {
         dispatch(getAuthorsAction(limit, pageNum));
     }, [dispatch, limit, pageNum]);
+    
     return (
         <div id="authors_main">
             {loading && <Loading />}
