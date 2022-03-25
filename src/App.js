@@ -8,7 +8,6 @@ import SideNav from "./components/Layouts/SideNav";
 import { Col, Container, Row } from "react-bootstrap";
 
 const App = () => {
-
   return (
     <BrowserRouter>
       <LoadingSuspense>
