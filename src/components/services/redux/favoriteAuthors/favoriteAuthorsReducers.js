@@ -30,6 +30,7 @@ export const favoriteAuthorsReducer = (state = initialState, action) => {
             }
 
         case REMOVE_FAVORITE_AUTHORS:
+            toast.success('Remove From favorite Authors');
             return {
                 ...state,
                 favoriteAuthors: state.favoriteAuthors.filter(x => x.id !== action.payload),
